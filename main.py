@@ -37,7 +37,7 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0) #where it starts 
 ball.dx = 2 #d is for delta moves two pixels
-ball.dy = 2
+ball.dy = -2
 
 #FUNCTION
 def paddle_a_up():
@@ -103,4 +103,14 @@ while True:
     ball.goto(0, 0)
     ball.dy *= -1 
 
+  #COLLISIONS
+
+  if (ball.xcor() >340 and ball.xcor() <350)  and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor()> paddle_b.ycor()-40 ):  #340 is the edges touching , 350 is for edges,  40 is at the top or bottom of the paddle 
+    ball.setx(340)
+    ball.dx *=-1
+
+
+  elif (ball.xcor() < -340 and ball.xcor() >-350)  and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor()> paddle_a.ycor()-40 ):  #340 is the edges touching , 350 is for edges,  40 is at the top or bottom of the paddle 
+    ball.setx(-340)
+    ball.dx *=-1
   
