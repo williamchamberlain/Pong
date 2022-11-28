@@ -7,6 +7,11 @@ wn.bgcolor("black")
 wn.setup(width=800, height=600)
 wn.tracer(0) #stops window form automatically updtaing se the code can do it when needd
 
+#SCORE
+score_a = 0
+score_b= 0
+
+
 
 #PADDLE A 
 paddle_a = turtle.Turtle() 
@@ -36,8 +41,19 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0) #where it starts 
-ball.dx = 2 #d is for delta moves two pixels
-ball.dy = -2
+ball.dx = 1.5 #d is for delta moves two pixels
+ball.dy = -1.5
+
+#PEN (TURTLE)
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle() #only wants to see the text
+pen.goto(0,260)
+pen.write("Player A: 0     Player B: 0", align="center", font=("Courier", 24, "normal"))
+
+
 
 #FUNCTION
 def paddle_a_up():
@@ -50,7 +66,6 @@ def paddle_a_down():
   y = paddle_a.ycor() 
   y -= 20 
   paddle_a.sety(y)
-
 
 
 
@@ -98,10 +113,16 @@ while True:
   if ball.xcor() > 390:
     ball.goto(0, 0) #reverse direction 
     ball.dx *= -1
+    score_a +=1
+    pen.clear()
+    pen.write("Player A: {}     Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal")) #updates scoreboard 
 
   elif ball.xcor() < -390:
     ball.goto(0, 0)
     ball.dy *= -1 
+    score_b+=1
+    pen.clear()
+    pen.write("Player A: {}     Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
   #COLLISIONS
 
