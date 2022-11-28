@@ -1,4 +1,4 @@
-
+import os
 import turtle
 
 wn=turtle.Screen() #defining screen
@@ -36,8 +36,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0) #where it starts 
-ball.dx = 0.5 #d is for delta moves two pixels
-ball.dy = -0.5
+ball.dx = 2 #d is for delta moves two pixels
+ball.dy = 2
 
 #FUNCTION
 def paddle_a_up():
@@ -91,7 +91,16 @@ while True:
   if ball.ycor() > 290:
     ball.sety(290)
     ball.dy *= -1 #reverses the direction 
-  if ball.ycor() > -290:
+  elif ball.ycor() < -290:
     ball.sety(-290)
     ball.dy *= -1 
 
+  if ball.xcor() > 390:
+    ball.goto(0, 0) #reverse direction 
+    ball.dx *= -1
+
+  elif ball.xcor() < -390:
+    ball.goto(0, 0)
+    ball.dy *= -1 
+
+  
