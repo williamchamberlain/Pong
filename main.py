@@ -2,7 +2,7 @@ import os
 import turtle
 
 wn=turtle.Screen() #defining screen
-wn.title("Will Pong")
+wn.title("Pong by Will Chamberlain")
 wn.bgcolor("black")
 wn.setup(width=800, height=600)
 wn.tracer(0) #stops window form automatically updtaing se the code can do it when needd
@@ -106,6 +106,8 @@ while True:
   if ball.ycor() > 290:
     ball.sety(290)
     ball.dy *= -1 #reverses the direction 
+    os.system("afplay bounce.wav&")
+  
   elif ball.ycor() < -290:
     ball.sety(-290)
     ball.dy *= -1 
@@ -134,4 +136,11 @@ while True:
   elif (ball.xcor() < -340 and ball.xcor() >-350)  and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor()> paddle_a.ycor()-40 ):  #340 is the edges touching , 350 is for edges,  40 is at the top or bottom of the paddle 
     ball.setx(-340)
     ball.dx *=-1
+
+
+
+
+
+
+
   
